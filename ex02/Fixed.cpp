@@ -1,0 +1,181 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hnemmass <hnemmass@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/31 13:07:00 by hnemmass          #+#    #+#             */
+/*   Updated: 2025/11/04 14:59:34 by hnemmass         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <Fixed.hpp>
+
+const int Fixed::fractional_bits = 8;
+
+Fixed::Fixed()
+{
+	std::cout << "Default constructor called" << std::endl;
+	this->fixed_point = 0;
+}
+
+Fixed::Fixed(const Fixed &old)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = old; 
+}
+
+Fixed::Fixed(const int number)
+{
+	std::cout << "Int constructor called" << std::endl;
+	this->fixed_point = number << fractional_bits; 
+}
+
+Fixed::Fixed(const float number)
+{
+	std::cout << "Float constructor called" << std::endl;
+	this->fixed_point = (int)roundf(number * (1 << fractional_bits));
+}
+
+Fixed &Fixed::operator=(const Fixed &old)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &old)
+		this->fixed_point = old.getRawBits();
+	return (*this);
+}
+
+bool Fixed::operator>(const Fixed &other) const
+{
+	return (this->getRawBits() > other.getRawBits());
+}
+
+bool Fixed::operator<(const Fixed &other) const
+{
+	return (this->getRawBits() < other.getRawBits());
+}
+
+bool Fixed::operator>=(const Fixed &other) const
+{
+	return (this->getRawBits() >= other.getRawBits());
+}
+
+bool Fixed::operator<=(const Fixed &other) const
+{
+	return (this->getRawBits() <= other.getRawBits());
+}
+
+bool Fixed::operator==(const Fixed &other) const
+{
+	return (this->getRawBits() == other.getRawBits());
+}
+
+bool Fixed::operator!=(const Fixed &other) const
+{
+	return (this->getRawBits() != other.getRawBits());
+}
+
+Fixed Fixed::operator+(const Fixed &n)
+{
+	Fixed res;
+	res.setRawBits(this->getRawBits() + n.getRawBits());
+	return (res);
+}
+
+Fixed Fixed::operator-(const Fixed &n)
+{
+	Fixed res;
+	res.setRawBits(this->getRawBits() - n.getRawBits());
+	return (res);
+}
+
+Fixed Fixed::operator*(const Fixed &n)
+{
+	Fixed res;
+	res.setRawBits(this->getRawBits() * n.getRawBits() >> fractional_bits);
+	return (res);
+}
+
+Fixed Fixed::operator/(const Fixed &n)
+{
+	Fixed res;
+	res.setRawBits(this->getRawBits() / n.getRawBits() << fractional_bits);
+	return (res);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp = *this;
+	++fixed_point;
+	return (tmp);
+}
+
+Fixed &Fixed::operator++()
+{
+	++fixed_point;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp = *this;
+	--fixed_point;
+	return (tmp);
+}
+
+Fixed &Fixed::operator--()
+{
+	--fixed_point;
+	return (*this);
+}
+
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called" << std::endl;
+}
+
+float Fixed::toFloat(void) const
+{
+	return ((float)fixed_point / (float)(1 << fractional_bits));
+}
+
+int Fixed::toInt(void) const
+{
+	return (fixed_point >> fractional_bits);
+}
+
+int Fixed::getRawBits(void) const
+{
+	return (fixed_point);
+}
+
+void Fixed::setRawBits(int const raw)
+{
+	this->fixed_point = raw;
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &f)
+{
+	out << f.toFloat();
+	return (out);
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	return (a < b ? a : b);
+}
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	return (a > b ? a : b);
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+	return (a < b ? a : b);
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+	return (a > b ? a : b);
+}
