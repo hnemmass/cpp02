@@ -6,11 +6,11 @@
 /*   By: hnemmass <hnemmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:07:00 by hnemmass          #+#    #+#             */
-/*   Updated: 2025/11/03 14:52:10 by hnemmass         ###   ########.fr       */
+/*   Updated: 2025/11/30 13:55:09 by hnemmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Fixed.hpp>
+#include "Fixed.hpp"
 
 const int Fixed::fractional_bits = 8;
 
@@ -29,7 +29,7 @@ Fixed::Fixed(const Fixed &old)
 Fixed::Fixed(const int number)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->fixed_point = number << fractional_bits; 
+	this->fixed_point = number << fractional_bits;
 }
 
 Fixed::Fixed(const float number)

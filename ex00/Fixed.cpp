@@ -6,11 +6,11 @@
 /*   By: hnemmass <hnemmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:07:00 by hnemmass          #+#    #+#             */
-/*   Updated: 2025/11/01 17:54:07 by hnemmass         ###   ########.fr       */
+/*   Updated: 2025/11/30 13:39:38 by hnemmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Fixed.hpp>
+#include "Fixed.hpp"
 
 const int Fixed::fractional_bits = 8;
 
@@ -41,7 +41,6 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (fixed_point);
 }
 

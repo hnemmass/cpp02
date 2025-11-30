@@ -6,11 +6,11 @@
 /*   By: hnemmass <hnemmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 16:53:58 by hnemmass          #+#    #+#             */
-/*   Updated: 2025/11/06 13:49:05 by hnemmass         ###   ########.fr       */
+/*   Updated: 2025/11/30 13:38:05 by hnemmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Point.hpp>
+#include "Point.hpp"
 
 float area(Point const a, Point const b, Point const c)
 {

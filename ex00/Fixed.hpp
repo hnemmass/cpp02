@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fixed.hpp                                          :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hnemmass <hnemmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:06:49 by hnemmass          #+#    #+#             */
-/*   Updated: 2025/11/01 17:20:49 by hnemmass         ###   ########.fr       */
+/*   Updated: 2025/11/30 13:35:12 by hnemmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Fixed
 		Fixed(const Fixed &old);
 		Fixed &operator=(const Fixed &old);
 		~Fixed();
+
 		int	getRawBits(void) const;
 		void setRawBits(int const raw);
 };

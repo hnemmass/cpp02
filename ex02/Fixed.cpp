@@ -6,11 +6,11 @@
 /*   By: hnemmass <hnemmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:07:00 by hnemmass          #+#    #+#             */
-/*   Updated: 2025/11/04 14:59:34 by hnemmass         ###   ########.fr       */
+/*   Updated: 2025/11/30 13:45:05 by hnemmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Fixed.hpp>
+#include "Fixed.hpp"
 
 const int Fixed::fractional_bits = 8;
 
